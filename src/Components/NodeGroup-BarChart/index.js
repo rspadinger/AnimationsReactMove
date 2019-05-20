@@ -22,13 +22,12 @@ class BarChart extends Component {
   };
 
   getInitialData = () => {
-    let numItems = 10;
     let data = [];
-    for (let i = 0; i < numItems; i++) {
+    for (let i = 1; i <= 10; i++) {
       data.push({
-        id: 'id-' + (i + 1),
+        id: 'id-' + i,
         value: this.randomNum(),
-        name: 'Item ' + (i + 1)
+        name: 'Item ' + i
       });
     }
     return data;
