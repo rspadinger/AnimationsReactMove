@@ -12,19 +12,16 @@ class Stripes extends Component {
       {
         background: 'teal',
         left: 0,
-        top: 0,
         delay: 0
       },
       {
         background: 'grey',
         left: 15,
-        top: 0,
         delay: 200
       },
       {
         background: 'teal',
         left: 30,
-        top: 0,
         delay: 400
       }
     ]
@@ -41,23 +38,21 @@ class Stripes extends Component {
     this.setState({ btnText, opacity, show: !this.state.show });
   };
 
-  animateStripes = () =>
-    this.state.stripes.map((stripe, i) => (
+  animateStripes = () => {
+    return this.state.stripes.map((stripe, i) => (
       <Animate
         key={i}
         show={this.state.show}
         start={{
           opacity: 0,
           left: 0,
-          rotate: 0,
-          top: 0
+          rotate: 0
         }}
         enter={{
           background: stripe.background,
           opacity: [this.state.opacity],
           left: [stripe.left],
           rotate: [this.state.rotate],
-          top: [stripe.top],
           timing: { delay: stripe.delay, duration: 1000, ease: easePolyOut }
         }}
         update={{
@@ -69,23 +64,24 @@ class Stripes extends Component {
           timing: { delay: stripe.delay, duration: 1000, ease: easePolyOut }
         }}
       >
-        {({ opacity, left, rotate, top, background }) => {
+        {({ opacity, left, rotate, background }) => {
           return (
             <div
-              className="stripe"
               style={{
                 width: '10px',
                 height: '120px',
                 position: 'absolute',
                 background,
                 opacity,
-                transform: `rotate(${rotate}deg) translate(${left}px,${top}px)`
+                transform: `rotate(${rotate}deg) translate(${left}px)`
               }}
             />
           );
         }}
       </Animate>
     ));
+  };
+
   render() {
     return (
       <div>

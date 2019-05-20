@@ -12,44 +12,46 @@ class TextRotate extends Component {
     this.setState({ opacity: op, fontSize: fs, rotate: rot });
   };
 
-  animateText = () => (
-    <Animate
-      show={true}
-      start={{
-        rotate: 0,
-        opacity: 0,
-        fontSize: 0
-      }}
-      enter={{
-        rotate: [360],
-        opacity: [1],
-        fontSize: [50],
-        timing: { duration: 2000, ease: easePolyOut }
-      }}
-      update={{
-        rotate: [this.state.rotate],
-        opacity: [this.state.opacity],
-        fontSize: [this.state.fontSize],
-        timing: { duration: 2000, ease: easePolyOut }
-      }}
-    >
-      {({ opacity, rotate, fontSize }) => {
-        return (
-          <div
-            style={{
-              position: 'absolute',
-              opacity: opacity,
-              transform: `translate(0px,100px) rotateY(${rotate}deg)`,
-              fontSize: fontSize,
-              color: 'teal'
-            }}
-          >
-            Hello
-          </div>
-        );
-      }}
-    </Animate>
-  );
+  animateText = () => {
+    return (
+      <Animate
+        show={true}
+        start={{
+          rotate: 0,
+          opacity: 0,
+          fontSize: 0
+        }}
+        enter={{
+          rotate: [360],
+          opacity: [1],
+          fontSize: [50],
+          timing: { duration: 2000, ease: easePolyOut }
+        }}
+        update={{
+          rotate: [this.state.rotate],
+          opacity: [this.state.opacity],
+          fontSize: [this.state.fontSize],
+          timing: { duration: 2000, ease: easePolyOut }
+        }}
+      >
+        {({ opacity, rotate, fontSize }) => {
+          return (
+            <div
+              style={{
+                position: 'absolute',
+                opacity,
+                transform: `translate(0px,100px) rotateY(${rotate}deg)`,
+                fontSize,
+                color: 'teal'
+              }}
+            >
+              Hello
+            </div>
+          );
+        }}
+      </Animate>
+    );
+  };
 
   render() {
     return (

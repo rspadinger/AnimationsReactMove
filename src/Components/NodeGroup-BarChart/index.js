@@ -6,9 +6,6 @@ class BarChart extends Component {
   constructor(props) {
     super(props);
 
-    this.barIndex = 1;
-    this.containerHeight = 300;
-    this.containerWidth = 1000;
     this.barWidth = 80;
 
     this.state = {
@@ -29,11 +26,10 @@ class BarChart extends Component {
     let data = [];
     for (let i = 0; i < numItems; i++) {
       data.push({
-        id: 'id-' + this.barIndex,
+        id: 'id-' + (i + 1),
         value: this.randomNum(),
-        name: 'Item ' + this.barIndex
+        name: 'Item ' + (i + 1)
       });
-      this.barIndex++;
     }
     return data;
   };
@@ -66,13 +62,7 @@ class BarChart extends Component {
           {nodes => (
             <div style={{ display: 'flex', transform: 'translate(50px, 10px)' }}>
               {nodes.map(({ key, data, state }) => (
-                <Bar
-                  key={key}
-                  data={data}
-                  animationProps={state}
-                  barWidth={this.barWidth}
-                  containerHeight={this.containerHeight}
-                />
+                <Bar key={key} data={data} animationProps={state} barWidth={this.barWidth} containerHeight="300" />
               ))}
             </div>
           )}
