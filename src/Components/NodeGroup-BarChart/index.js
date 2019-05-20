@@ -6,11 +6,6 @@ class BarChart extends Component {
   constructor(props) {
     super(props);
 
-<<<<<<< HEAD
-=======
-    this.containerHeight = 300;
-    this.containerWidth = 1000;
->>>>>>> 8042f062791006541f4a1083ebf25067279fc0dd
     this.barWidth = 80;
 
     this.state = {
